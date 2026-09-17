@@ -57,7 +57,7 @@ function MovePlayer()
     if(player.y < 0) 
     {
         player.y = 0;
-    } else if (player.y + player.size > canvas.width) {
+    } else if (player.y + player.size > canvas.height) {
         player.y = canvas.height - player.size;
     }
 }
