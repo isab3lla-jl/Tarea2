@@ -62,24 +62,24 @@ function OnKeyUp(e)
 function MovePlayer()
 {
     if (keys.ArrowRight) {
+        //console.log(keys.ArrowRight);
         player.speedX = player.speed;
-    } else {
+    }
+    if (!keys.ArrowRight) {
+        //console.log(keys.ArrowRight);
         player.speedX = 0;
     }
     if (keys.ArrowLeft) {
         player.speedX = -player.speed;
-    } else {
-        player.speedX = 0;
     }
     if (keys.ArrowUp) {
         player.speedY = -player.speed;
-    } else {
+    }
+    if (!keys.ArrowUp) {
         player.speedY = 0;
     }
     if (keys.ArrowDown) {
         player.speedY = player.speed;
-    } else {
-        player.speedY = 0;
     }
 
     player.x += player.speedX;
