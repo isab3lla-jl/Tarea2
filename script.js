@@ -11,6 +11,13 @@ const player = {
     color: "#b00b69"
 };
 
+const keys = {
+    ArrowRight: false,
+    ArrowLeft: false,
+    ArrowUp: false,
+    ArrowDown: false
+}
+
 window.addEventListener("load", Start);
 
 function Start()
@@ -18,12 +25,16 @@ function Start()
     canvas = document.getElementById("GameCanvas");
     ctx = canvas.getContext("2d");
     document.addEventListener("keydown", OnKeyDown);
+    document.addEventListener("keyup", OnKeyUp);
     Update();
 }
 
 function OnKeyDown(e)
 {
-    console.log(e.key);
+    if (e.key in keys) {
+        keys[e.key] = true;
+    }
+    /*console.log(e.key);
     if (e.key == "ArrowRight") {
         player.speedX = player.speed;
         player.speedY = 0;
@@ -39,11 +50,30 @@ function OnKeyDown(e)
     if (e.key == "ArrowDown") {
         player.speedY = player.speed;
         player.speedX = 0;
+    }*/
+}
+function OnKeyUp(e)
+{
+    if (e.key in keys) {
+        keys[e.key] = false;
     }
 }
 
 function MovePlayer()
 {
+    if (keys.ArrowRight) {
+        player.speedX = player.speed;
+    } 
+    if (keys.ArrowLeft) {
+        player.speedX = -player.speed;
+    } 
+    if (keys.ArrowUp) {
+        player.speedY = -player.speed;
+    }
+    if (keys.ArrowDown) {
+        player.speedY = player.speed;
+    } 
+
     player.x += player.speedX;
     player.y += player.speedY;
 
