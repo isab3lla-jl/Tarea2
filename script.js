@@ -63,16 +63,24 @@ function MovePlayer()
 {
     if (keys.ArrowRight) {
         player.speedX = player.speed;
-    } 
+    } else {
+        player.speedX = 0;
+    }
     if (keys.ArrowLeft) {
         player.speedX = -player.speed;
-    } 
+    } else {
+        player.speedX = 0;
+    }
     if (keys.ArrowUp) {
         player.speedY = -player.speed;
+    } else {
+        player.speedY = 0;
     }
     if (keys.ArrowDown) {
         player.speedY = player.speed;
-    } 
+    } else {
+        player.speedY = 0;
+    }
 
     player.x += player.speedX;
     player.y += player.speedY;
